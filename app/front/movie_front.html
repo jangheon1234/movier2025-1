@@ -18,6 +18,33 @@
 <h1> 이장헌의 첫 영화추천 서비스 </h1>
 </div>
 
+<hr>
+<h2>오늘의 영화 추천</h2>
+
+<div id="alldiv" style="column-count: 5"></div>
+
+<hr>
+<h2>장르별 추천</h2>
+
+<select name="" id="sgenre">
+    <option value="comedy">코미디</option>
+    <option value="drama">드라마</option>
+    <option value="action" selected>액션</option>
+    <option value="horror">호러</option>
+    <option value="fantasy">판타지</option>
+</select>
+<button type="button" class="btn bg-primary btn-lg"
+onclick="MovieObject.getgenres()">장르선택</button>
+<div id="genrediv" style="column-count: 5"></div>
+
+<h2>영화기반 추천</h2>
+
+<div id="itemdiv" style="column-count: 5"></div>
+
+
+<h2>사용자기반 추천</h2>
+
+<div id="userdiv" style="column-count: 5"></div>
 
 
 </body>
