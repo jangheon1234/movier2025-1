@@ -1,9 +1,7 @@
 let MovieObject = {
     init: function(){
-        alert("init함수가 불러짐");
     },
     getall : function(){
-        alert("getall함수가 불러짐");
         $.ajax({
         // 실행할 코드
             type:"GET",
@@ -14,26 +12,27 @@ let MovieObject = {
             movielist = response.result
 
             topdiv = document.createElement("div")
+            topdiv.style = "column-count: 5"
             document.body.appendChild(topdiv)
-        // 첫 번쨰 영화 이미지
-            cmovie = document.createElement("div")
-            cmovie.className = "card"
 
-            mimg = document.createElement("img")
-            mimg.className = "card-img-top"
-            mimg.src = movielist[0].poster_path
-            cmovie.appendChild(mimg)
-            topdiv.appendChild(cmovie)
+            movielist.forEach(movie => {
+                cmovie = document.createElement("div")
+                cmovie.className = "card"
 
-        // 두번째 영화 이미지
-            cmovie = document.createElement("div")
-            cmovie.className = "card"
+                mimg = document.createElement("img")
+                mimg.className = "card-img-top"
+                mimg.src = movie.poster_path
+                // mimg.style.cursor = "pointer";
 
-            mimg = document.createElement("img")
-            mimg.className = "card-img-top"
-            mimg.src = movielist[1].poster_path
-            cmovie.appendChild(mimg)
-            topdiv.appendChild(cmovie)
+                mimg.onclick = function(){
+                    window.open(movie.url);
+                }
+                // mimg.onmouseover = function(){
+                //     mimg.style.cursor = "pointer"
+                // }
+                cmovie.appendChild(mimg)
+                topdiv.appendChild(cmovie)
+            })
 
         }).fail(function(response){
         // 실패코드
