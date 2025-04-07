@@ -1,12 +1,23 @@
 import pandas as pd
 from fastapi import FastAPI
 import uvicorn
+from starlette.middleware.cors import CORSMiddleware
 
 from app.data.recommender import item_based_recommendation
 from resolver import random_items, random_genres_items, random_genres_items_best
 
 app = FastAPI()
 
+origins = {
+    "*",
+}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # def random_items():
 #     movies_df = pd.read_csv("data/movies_final.csv")
 #     movies_df = movies_df.fillna('')
